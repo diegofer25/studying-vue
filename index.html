@@ -8,8 +8,37 @@
     <script src="js/vue.js"></script>
     <title>Studying Vue.js</title>
 </head>
+
 <body>
-    
-    
+    <div id="vueapp">
+        <input type="text" v-model="input">
+        <button v-on:click="list.push({id:list.length, text:input+(list.length+1)})">Add</button>
+        <table>
+            <tbody>
+                <tr v-for="item of list">
+                    <td>{{item.id}}</td>
+                    <td>{{item.text}}</td>
+                    <td>
+                        <button v-on:click="list.splice(key, 1)">Delete</button>
+                        <button v-on:click="">Editar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        let config = Vue.config.silent = true;
+        let vm = new Vue({
+            el: '#vueapp',
+            data: {
+                list: [
+                    { id: 0, text: 'teste1' },
+                    { id: 1, text: 'teste2' },
+                    { id: 2, text: 'teste3' }
+                ]
+            }
+        });
+    </script>
 </body>
+
 </html>
